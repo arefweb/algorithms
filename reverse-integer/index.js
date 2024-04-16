@@ -1,13 +1,20 @@
 function reverse(x) {
-  const num = String(x);
-  let numsArr = [];
-  for (i = 0; i < num.length; i++) {
-    if(numsArr.length === 0 && num[i] === 0) continue;
-    numsArr.unshift(num[i]);
+  let num = String(x);
+  let result = "";
+  let isSigned = false;
+  if (x < 0) {
+    num = String(Math.abs(x));
+    isSigned = true;
   }
-  return numsArr.join("");
+  for (i = 0; i < num.length; i++) {
+    result = num[i] + result;
+  }
+  if (isSigned) {
+    result = "-" + result;
+  }
+  return Number(result);
 }
 
-console.log("-123 should retrun -321", reverse(-123));
+console.log("-12300 should retrun -321", reverse(-12300));
 
 module.exports = reverse;
